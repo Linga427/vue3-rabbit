@@ -5,8 +5,12 @@ import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
+
 // https://vitejs.dev/config/
 export default defineConfig({
+  transpileDependencies:true,
+  // 基本路径
+  base: './',
   plugins: [
     vue(),
     AutoImport({
@@ -35,8 +39,8 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist', // 打包输出目录
-    base: './', // 修改为你的项目基础路径（如果有）
     minify: 'terser', // 使用 terser 进行压缩
+    assetsPublicPath: './',
     chunkSizeWarningLimit: 600, // 警告大小限制
     sourcemap: true, //是否构建source map 文件
     terserOptions: {
